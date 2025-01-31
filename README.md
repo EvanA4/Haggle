@@ -13,7 +13,7 @@ pnpm dev
 ## 2. Planned layout
 
 <p align="center">
-    <img alt="Haggle Architecture" src="readme_assets/Haggle_Architecture.png"/>
+    <img alt="Haggle Architecture" src="Haggle_Architecture.png"/>
 </p>
 
 ### i. Page Routes
