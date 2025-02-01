@@ -16,9 +16,28 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
     console.log('New connection!');
 
+    socket.on('switchroom', (roomNum) => {
+        if (socket.rooms.size > 1) {
+            for (const room of socket.rooms) {
+                if (room != socket.id) {
+                    socket.leave(room);
+                }
+            }
+        }
+        
+        socket.join(roomNum);
+    })
+
     socket.on('myevent', (msg) => {
-        console.log(`myevent: "${msg}"`);
-        io.emit('myevent', msg);
+        if (socket.rooms.size == 2) {
+            for (const room of socket.rooms) {
+                if (room != socket.id) {
+                    console.log(`Sending "${msg}" to room ${room}`);
+                    io.to(room).emit('myevent', msg);
+                    break;
+                }
+            }
+        }
     });
 
     socket.on('disconnect', () => {
