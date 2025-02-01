@@ -18,7 +18,7 @@ io.on('connection', (socket) => {
 
     socket.on('myevent', (msg) => {
         console.log(`myevent: "${msg}"`);
-        socket.emit('myevent', msg);
+        io.emit('myevent', msg);
     });
 
     socket.on('disconnect', () => {

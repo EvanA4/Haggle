@@ -18,9 +18,7 @@ const GameServer = () => {
 
         const socketLocal = io("http://localhost:8080");
 
-        socketLocal.on("myevent", (msg) => {
-            setMsgs(msgs.concat(msg));
-        })
+        socketLocal.on("myevent", (msg) => setMsgs(prev => [msg, ...prev]));
 
         setSocket(socketLocal);
     }, []);
