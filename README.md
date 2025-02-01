@@ -1,14 +1,13 @@
 # Haggle
+
 A NextJS, online card game perfect for ruining friendships.
 
-## 1. How to use
-First, contact me for the `.env.local` file and add it to the root directory of the project.
 
-Then, in the root directory, run these commands to install the necessary NodeJS packages and start the web server, respectively:
-```
-pnpm i
-pnpm dev
-```
+## 1. How to use
+
+Change directories in two terminals to both `/client` and `/game_server`. Follow
+the necessary instructions there to run the corresponding service!
+
 
 ## 2. Planned layout
 
@@ -16,9 +15,10 @@ pnpm dev
     <img alt="Haggle Architecture" src="Haggle_Architecture.png"/>
 </p>
 
+
 ### i. Page Routes
 
-Here are the planned routes for the different pages:
+Here are the planned functionalities for the different routes:
 
 - `/`
     - nav bar to `/play`, `/rules`, and `/`
@@ -36,28 +36,26 @@ Here are the planned routes for the different pages:
         - playing online w/o signing in doesn't update leaderboard
         - user can set anonymous username with sessionStorage API
     - public leaderboards
-        - fetch all users
-    - if signed in:
-        - show where they are in leaderboard
-            - check if user in list matches Auth0 email
-            - if so, make a dynamic HTML anchor/link pair
-    - show cames to play as links
+    - if signed in, show where they are in leaderboard
+    - show games to play as a vertical list
         - hyperlink elements link to `/play/online/[gameTitle]`
-        - fetch games that aren't full nor private
             - display number of users already in game
+            - display title of the game room
         - reload button
-    - create new game
-        - open form that takes in gameTitle
+    - create new game button
+        - opens form that takes in gameTitle
 
 - `/play/offline`
     - user can play a game locally
+    - game screen should take up most of the area
+    - disconnect button in bottom right corner
     - <b>single player should be implemented first</b>
 
 - `/play/online/[gameTitle]`
-    - upon leaving game, terminate game
-    - check whitelist if private game
-    - check for for full game when joining
-        - <b>if filled game, possibly implement spectator mode</b>
+    - use can play a game online
+    - game screen should take up most of the area
+    - disconnect button in bottom right corner
+
 
 ### ii. Models
 
@@ -90,4 +88,12 @@ We'll be using Sequelize as the ORM, but here's the models:
 ### iii. API Routes
 
 - `/users`
+    - public leaderboard users
+
 - `/games?allow_full=false`
+    - search for existing games online
+
+> [!NOTE]
+> More details regarding communication between the websocket server and
+> NextJS application will be specified later into development. The same
+> goes for interactions between the websocket server and the database.

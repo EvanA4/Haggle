@@ -1,6 +1,6 @@
 import React from 'react';
-import NavBar from '../components/SimpleUser/NavBar';
-import GameServer from '../components/SimpleUser/GameServer';
+import NavBar from '../components/NavBar';
+import GameServer from '../components/GameServer';
 
 const page = () => {
   return (

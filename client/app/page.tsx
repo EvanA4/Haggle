@@ -1,5 +1,5 @@
-import SimpleUser from "@/app/components/SimpleUser/SimpleUser";
-import NavBar from "./components/SimpleUser/NavBar";
+import SimpleUser from "@/app/components/SimpleUser";
+import NavBar from "./components/NavBar";
 
 export default function Home() {
   return (
